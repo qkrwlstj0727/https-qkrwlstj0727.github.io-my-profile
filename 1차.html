@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>박진서 | Semiconductor R&D & Process Engineer</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================
+       CSS Variables & Reset (Color Palette)
+       Ivory (#F9F8F5) | Charcoal (#181A1B)
+       Orange (#EA580C) | Sage/Lime (#4F772D)
+    ========================================== */
+    :root {
+      --bg-canvas: #F9F8F5;
+      --bg-card: #FFFFFF;
+      --bg-card-subtle: #F3F1EC;
+      --text-main: #181A1B;
+      --text-muted: #5C636A;
+      --text-light: #8C949D;
+      
+      --charcoal-dark: #121416;
+      --charcoal-surface: #1E2226;
+      
+      --accent-orange: #EA580C;       /* Engineer: Process / Hands-on */
+      --accent-orange-bg: #FFF1EB;
+      --accent-orange-border: #FDBA74;
+
+      --accent-green: #4F772D;        /* Researcher: Mechanism / Analysis */
+      --accent-green-bg: #F0FDF4;
+      --accent-green-border: #BBF7D0;
+      
+      --border-color: #E6E3DB;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 8px rgba(24, 26, 27, 0.04);
+      --shadow-md: 0 8px 24px rgba(24, 26, 27, 0.08);
+      --font-family: 'Pretendard', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      font-family: var(--font-family);
+      line-height: 1.65;
+      letter-spacing: -0.015em;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ==========================================
+       Header & Navigation
+    ========================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(249, 248, 245, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 68px;
+    }
+
+    .logo {
+      font-size: 1.15rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: var(--charcoal-dark);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* ==========================================
+       Hero Section
+    ========================================== */
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .badge-track {
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-engineer {
+      background: var(--accent-orange-bg);
+      color: var(--accent-orange);
+      border: 1px solid var(--accent-orange-border);
+    }
+
+    .badge-researcher {
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      border: 1px solid var(--accent-green-border);
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--charcoal-dark);
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+    
+    .hero-desc strong {
+      display: block;
+      color: var(--charcoal-dark);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--charcoal-dark);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #2D3139;
+      transform: translateY(-1px);
+    }
+
+    /* Bento Grid (Key Highlights - 5 Columns) */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .bento-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .bento-num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--charcoal-dark);
+      line-height: 1.1;
+      margin-bottom: 10px;
+      word-break: keep-all;
+    }
+
+    .bento-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.3;
+      word-break: keep-all;
+    }
+
+    /* ==========================================
+       Dual Tracks Section (Core Experience)
+    ========================================== */
+    .section-header {
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--charcoal-dark);
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 72px;
+    }
+
+    .track-column {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .track-column.engineer-col {
+      border-top: 4px solid var(--accent-orange);
+    }
+
+    .track-column.researcher-col {
+      border-top: 4px solid var(--accent-green);
+    }
+
+    .track-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 16px;
+    }
+
+    .track-header h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .track-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .track-item-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--charcoal-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .track-item-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--bg-card-subtle);
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ==========================================
+       Publications Section
+    ========================================== */
+    .pub-section {
+      margin-bottom: 72px;
+    }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .pub-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .pub-card:hover {
+      border-color: var(--charcoal-dark);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pub-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .pub-badge-group {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .pub-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .pub-badge.first-author {
+      background: var(--accent-green-bg);
+      color: var(--accent-green);
+      border: 1px solid var(--accent-green-border);
+    }
+
+    .pub-badge.co-author {
+      background: var(--bg-card-subtle);
+      color: var(--text-muted);
+    }
+
+    .pub-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--charcoal-dark);
+      line-height: 1.45;
+    }
+
+    .pub-authors {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .pub-authors strong {
+      color: var(--charcoal-dark);
+      text-decoration: underline;
+    }
+
+    .pub-journal {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-style: italic;
+    }
+
+    .pub-link-btn {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-orange);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    /* ==========================================
+       Skills & Equipment
+    ========================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 72px;
+    }
+
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 24px;
+    }
+
+    .skill-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: var(--charcoal-dark);
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    .skill-items {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ==========================================
+       Footer (Contact & AI Tag)
+    ========================================== */
+    footer {
+      background: var(--charcoal-dark);
+      color: #fff;
+      padding: 64px 0 40px;
+      margin-top: 48px;
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .footer-left h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+    }
+
+    .footer-left p {
+      color: #A0AEC0;
+      font-size: 0.95rem;
+      max-width: 420px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .footer-phone {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #FDBA74;
+    }
+
+    .footer-email {
+      font-size: 1.05rem;
+      color: #E2E8F0;
+    }
+    
+    .footer-email:hover {
+      text-decoration: underline;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2D3748;
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: #718096;
+    }
+
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #2D3748;
+      color: #E2E8F0;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    /* ==========================================
+       Responsive Media Queries (Mobile First)
+    ========================================== */
+    @media (max-width: 900px) {
+      .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .dual-grid {
+        grid-template-columns: 1fr;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .footer-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container nav-wrapper">
+      <div class="logo">
+        박진서 <span class="logo-badge">R&D / Engineer</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#dual-track">핵심역량</a></li>
+        <li><a href="#publications">연구논문</a></li>
+        <li><a href="#skills">장비·기술</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="about">
+    <div class="container">
+      <div class="hero-tags">
+        <span class="badge-track badge-engineer">⚡ Engineer: 공정 최적화 & SOP 표준화</span>
+        <span class="badge-track badge-researcher">🔬 Researcher: 전도 메커니즘 & 신뢰성 분석</span>
+      </div>
+      <h1 class="hero-title">
+        데이터로 한계를 규명하고,<br>
+        공정으로 소자를 완성합니다.
+      </h1>
+      <p class="hero-desc">
+        <strong>Materials · Process · Device · Measurement · Reliability</strong>
+        소재 합성부터 소자 제작, 전기적 신뢰성 검증까지 완결하는 엔지니어 겸 연구자입니다.
+      </p>
+      <div class="hero-cta">
+        <a href="#publications" class="btn btn-primary">📄 SCI 논문 7편 살펴보기</a>
+      </div>
+
+      <!-- Bento Key Metrics (5 Columns) -->
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="bento-num">7<span style="font-size: 1.2rem; font-weight: 600;">편</span></div>
+          <div class="bento-label">SCI(E) 국제학술지 게재</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num">3<span style="font-size: 1.2rem; font-weight: 600;">편</span></div>
+          <div class="bento-label">공동 제1저자 논문</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num" style="font-size: 1.5rem;">MOCVD</div>
+          <div class="bento-label">Full Cycle 운용</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num" style="font-size: 1.5rem;">I-V 피팅</div>
+          <div class="bento-label">전도 모델 규명</div>
+        </div>
+        <div class="bento-card">
+          <div class="bento-num" style="font-size: 1.5rem;">신뢰성</div>
+          <div class="bento-label">테스트 프로토콜 최적화</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dual Track Section -->
+  <section class="dual-track-section" id="dual-track">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Dual Core Competencies</h2>
+        <p class="section-subtitle">현장 실무 중심의 엔지니어링 실행력과 원인을 파고드는 학술적 연구 깊이</p>
+      </div>
+
+      <div class="dual-grid">
+        <!-- Track 1: Engineer (Orange) -->
+        <div class="track-column engineer-col">
+          <div class="track-header">
+            <h3>⚡ Practical Engineer</h3>
+            <span class="badge-track badge-engineer">실무·공정·트러블슈팅</span>
+          </div>
+
+          <div class="track-item">
+            <div class="track-item-title">MOCVD GaN 에피택시 Full-Cycle 운용</div>
+            <p class="track-item-desc">
+              TMGa·NH₃·SiH₄ 가스 유량 및 V/III ratio 제어로 Si(111) 위 n-GaN 성장 레시피 설계. 가스 플로우 피드백 제어 및 SOP 표준화로 후임 교육 전담.
+            </p>
+            <div class="tag-list">
+              <span class="tag">MOCVD</span>
+              <span class="tag">Recipe 최적화</span>
+              <span class="tag">SOP 작성</span>
+            </div>
+          </div>
+
+          <div class="track-item">
+            <div class="track-item-title">장비 초기화 사고 독자 복구 & 오너십</div>
+            <p class="track-item-desc">
+              Keithley 4200A-SCS 파라미터 분석기 초기화 사고 발생 시, Compliance·Voltage Sweep 측정 루트를 독자적으로 재설계하여 복구하고 팀 매뉴얼 구축.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Keithley 4200A</span>
+              <span class="tag">트러블슈팅</span>
+              <span class="tag">인프라 재구축</span>
+            </div>
+          </div>
+
+          <div class="track-item">
+            <div class="track-item-title">DOE 기반 스크린 프린팅 공정 최적화</div>
+            <p class="track-item-desc">
+              중기청 과제 수행 중 경화 온도 변수 실험을 통해 면저항을 10Ω 이상 낮춘 150℃ 최적 조건을 도출하고, 밴딩 테스트 인프라 직접 설치 및 운용.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Screen Printing</span>
+              <span class="tag">DOE</span>
+              <span class="tag">Trade-off 해결</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Track 2: Researcher (Green) -->
+        <div class="track-column researcher-col">
+          <div class="track-header">
+            <h3>🔬 Deep Researcher</h3>
+            <span class="badge-track badge-researcher">논문·메커니즘·분석</span>
+          </div>
+
+          <div class="track-item">
+            <div class="track-item-title">물리 전도 메커니즘 규명 (SCLC & F-N)</div>
+            <p class="track-item-desc">
+              단순 데이터 수집을 넘어, I-V fitting을 통해 Ohmic → trap-limited SCLC → Fowler-Nordheim tunneling 전이 과정을 수학적·물리적으로 증명.
+            </p>
+            <div class="tag-list">
+              <span class="tag">SCLC Fitting</span>
+              <span class="tag">F-N Tunneling</span>
+              <span class="tag">OriginPro</span>
+            </div>
+          </div>
+
+          <div class="track-item">
+            <div class="track-item-title">차세대 비휘발성 메모리 신뢰성 검증</div>
+            <p class="track-item-desc">
+              Co₃O₄-Graphene 및 ZnO-C₆₀ 코어-쉘 플랫폼 기반 소자에서 1.5×10⁴ 사이클 이상의 Endurance, 10⁵ s 이상의 Retention 및 저온(-30℃) 신뢰성 확보.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Endurance</span>
+              <span class="tag">Retention</span>
+              <span class="tag">저온 환경 시험</span>
+            </div>
+          </div>
+
+          <div class="track-item">
+            <div class="track-item-title">광전하 분리 동역학 정량 분석 (TRPL)</div>
+            <p class="track-item-desc">
+              ZnO-C₆₀ QD 결합 시 97.72%의 PL Quenching 및 89% FRET 효율을 확인하여 전하 분리 가속이 1.51 A/W 광응답성으로 이어짐을 체계적으로 입증.
+            </p>
+            <div class="tag-list">
+              <span class="tag">TRPL</span>
+              <span class="tag">PL Quenching</span>
+              <span class="tag">Band Engineering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications Section -->
+  <section class="pub-section" id="publications">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Publications (SCI/SCIE 7편)</h2>
+        <p class="section-subtitle">공동 제1저자 3편 및 공동저자 4편의 학술적 검증 실적</p>
+      </div>
+
+      <div class="pub-list">
+        <!-- 1 -->
+        <div class="pub-card">
+          <div class="pub-top">
+            <div class="pub-title">Fast Charge Separation by Direct Combination of Fullerene C₆₀ with ZnO Quantum Dots and its Application in Ultraviolet Photodetectors</div>
+            <div class="pub-badge-group">
+              <span class="pub-badge first-author">공동 제1저자</span>
+            </div>
+          </div>
+          <div class="pub-authors"><strong>Jinseo Park</strong>, Jaeho Shim, Dong Ick Son</div>
+          <div class="pub-journal">Journal of Electronic Materials, Vol. 54, 4042–4049 (2025)</div>
+          <a href="https://link.springer.com/article/10.1007/s11664-025-11832-8" target="_blank" class="pub-link-btn">논문 원문 링크 ↗</a>
+        </div>
+
+        <!-- 2 -->
+        <div class="pub-card">
+          <div class="pub-top">
+            <div class="pub-title">Organic bistable memory devices utilizing PMMA polymer matrix-based ZnO–C₆₀ core-shell QDs nanocomposites</div>
+            <div class="pub-badge-group">
+              <span class="pub-badge first-author">공동 제1저자</span>
+            </div>
+          </div>
+          <div class="pub-authors">Jaeho Shim, <strong>Jinseo Park</strong>, Seok-Ho Seo, Ju Hee You, Dong Ick Son</div>
+          <div class="pub-journal">Carbon Trends, Vol. 20, 100517 (2025)</div>
+          <a href="https://www.sciencedirect.com/science/article/pii/S2667056925000677" target="_blank" class="pub-link-btn">논문 원문 링크 ↗</a>
+        </div>
+
+        <!-- 3 -->
+        <div class="pub-card">
+          <div class="pub-top">
+            <div class="pub-title">Co₃O₄–graphene core–shell QDs–PMMA insulating polymer composites structured nonvolatile bistable memory devices</div>
+            <div class="pub-badge-group">
+              <span class="pub-badge first-author">공동 제1저자</span>
+            </div>
+          </div>
+          <div class="pub-authors"><strong>Jinseo Park</strong>, Jaeho Shim, Dong Ick Son</div>
+          <div class="pub-journal">Carbon Trends, Vol. 19, 100473 (2025)</div>
+          <a href="https://www.sciencedirect.com/science/article/pii/S2667056925000239" target="_blank" class="pub-link-btn">논문 원문 링크 ↗</a>
+        </div>
+
+        <!-- 4 -->
+        <div class="pub-card">
+          <div class="pub-top">
+            <div class="pub-title">Mechanically flexible BNNT–ZnO quantum dot nanocomposites for high-performance resistive memory applications</div>
+            <div class="pub-badge-group">
+              <span class="pub-badge co-author">공동저자</span>
+            </div>
+          </div>
+          <div class="pub-authors">J. Shim, D. G. Heo, <strong>J. Park</strong>, J. H. You, S.-H Seo, Y. Wei, Y.-H. Ra, S. Kim, S. Park, I. Seo, Y. J. Park, D. Park, D. I. Son</div>
+          <div class="pub-journal">Journal of Materiomics, Vol. 12, 101252 (2026)</div>
+          <a href="https://www.sciencedirect.com/science/article/abs/pii/S2588842026000830" target="_blank" class="pub-link-btn">논문 원문 링크 ↗</a>
+        </div>
+
+        <!-- 5 -->
+        <div class="pub-card">
+          <div class="pub-top">
+            <div class="pub-title">Rapid-sensitive UV photodetectors based on rGO-wrapped vertically aligned GaN nanowire heterostructures</div>
+            <div class="pub-badge-group">
+              <span class="pub-badge co-author">공동저자</span>
+            </div>
+          </div>
+          <div class="pub-authors">V. Veeramuthu, S.-W. Lee, S.-U. Kim, D. I. Son, <strong>J.-S. Park</strong>, J.-K. Oh, M.-S. Lee, I.-S. Na, C.-R. Lee, Y.-H. Ra</div>
+          <div class="pub-journal">Materials Today Nano, Vol. 34, 100834 (2026)</div>
+          <a href="https://www.sciencedirect.com/science/article/pii/S2352847826000924" target="_blank" class="pub-link-btn">논문 원문 링크 ↗</a>
+        </div>
+
+        <!-- 6 -->
+        <div class="pub-card">
+          <div class="pub-top">
+            <div class="pub-title">Efficient visible-light-driven hydrogen evolution with MoS₂/TiO₂ heterojunction photoanodes on porous stainless steel mesh</div>
+            <div class="pub-badge-group">
+              <span class="pub-badge co-author">공동저자</span>
+            </div>
+          </div>
+          <div class="pub-authors">J. You, S.-H. Seo, D. G. Heo, <strong>J. Park</strong>, H. S. Lee, M. S. Yazici, Y.-H. Ra, I. Seo, D. Park, D. I. Son</div>
+          <div class="pub-journal">International Journal of Hydrogen Energy, Vol. 196, 152561 (2025)</div>
+          <a href="https://www.sciencedirect.com/science/article/pii/S0360319925055648" target="_blank" class="pub-link-btn">논문 원문 링크 ↗</a>
+        </div>
+
+        <!-- 7 -->
+        <div class="pub-card">
+          <div class="pub-top">
+            <div class="pub-title">Solar-Driven Sustainability: III–V Semiconductor for Green Energy Production Technologies</div>
+            <div class="pub-badge-group">
+              <span class="pub-badge co-author">공동저자 (Review)</span>
+            </div>
+          </div>
+          <div class="pub-authors">B. Chandran, J.-K. Oh, S.-W. Lee, D.-Y. Um, S.-U. Kim, V. Veeramuthu, <strong>J.-S. Park</strong>, S. Han, C.-R. Lee, Y.-H. Ra</div>
+          <div class="pub-journal">Nano-Micro Letters, Vol. 16, 244 (2024)</div>
+          <a href="https://link.springer.com/article/10.1007/s40820-024-01412-6" target="_blank" class="pub-link-btn">논문 원문 링크 ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills & Equipment -->
+  <section class="skills-section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Equipment & Tool Stack</h2>
+        <p class="section-subtitle">직접 운용 및 데이터 분석 프로토콜 구축이 가능한 공정·계측 장비</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h4>🔧 공정 & 박막 장비</h4>
+          <ul class="skill-items">
+            <li>• MOCVD (GaN-on-Si 에피 성장)</li>
+            <li>• Thermal Evaporator (Al 전극 증착)</li>
+            <li>• Thermal CVD (그래핀 합성 & Au de-wetting)</li>
+            <li>• RIE (O₂ 플라즈마 표면처리)</li>
+            <li>• Spin / Spray Coater & Screen Printer</li>
+            <li>• PMMA 기반 그래핀 습식 전사</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h4>🔬 분석 & 전기 신뢰성</h4>
+          <ul class="skill-items">
+            <li>• Keithley 4200A-SCS + MST4000A Probe</li>
+            <li>• FE-SEM (시편 전처리 코팅 포함) & EDS</li>
+            <li>• HR-TEM / STEM-EDS 격자 분석</li>
+            <li>• PL / TRPL 광전하 분석</li>
+            <li>• UV-Vis 분광광도계 (V-670)</li>
+            <li>• XRD 결정성 구조 분석</li>
+          </ul>
+        </div>
+
+        <div class="skill-card">
+          <h4>📊 소프트웨어 & 어학</h4>
+          <ul class="skill-items">
+            <li>• OriginPro (비선형 피팅 & Figure 제작)</li>
+            <li>• 3ds Max (3D 소자 구조 시각화)</li>
+            <li>• Excel (컴퓨터활용능력 1급)</li>
+            <li>• TOEIC Speaking IH (140)</li>
+            <li>• OPIc IM3</li>
+            <li>• 영문 학술지 강독 및 토론 역량</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-left">
+          <h3>함께 문제를 해결할 준비가 되어 있습니다.</h3>
+          <p>
+            반도체 공정, 소자 신뢰성 평가, 차세대 메모리 및 광전자 소자 R&D 포지션 제안을 환영합니다.
+          </p>
+        </div>
+        <div class="footer-links">
+          <span style="color: #A0AEC0; font-size: 0.85rem;">연락처 (Direct Contact)</span>
+          <div class="footer-phone">010-8808-6475</div>
+          <a href="mailto:qkrwlstj0727@naver.com" class="footer-email">qkrwlstj0727@naver.com</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Park Jinseo. All rights reserved.</div>
+        <div class="ai-badge">
+          ✨ Built with AI Pair Programming (Frontend & Data Architecture)
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
